@@ -31,6 +31,8 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String COLUMN_CAPACITY = "capacity";
     private static final String COLUMN_LOCATION = "location";
     private static final String COLUMN_IS_AVAILABLE = "is_available";
+    private static final String COLUMN_TIME = "time";
+
     private static final String COLUMN_AMENITIES = "amenities";
 
     // Reservations table columns
@@ -48,7 +50,7 @@ public class DBHandler extends SQLiteOpenHelper {
         String CREATE_STUDENT_TABLE = "CREATE TABLE " + STUDENT_TABLE + "("
                 + COLUMN_NAME + " TEXT,"
                 + COLUMN_PASSWORD + " TEXT,"
-                + COLUMN_EMAIL + " TEXT PRIMARY KEY,"
+                + COLUMN_EMAIL + " TEXT PRIMARY KEY"
                 + ")";
 
         String CREATE_STUDY_ROOMS_TABLE = "CREATE TABLE " + STUDY_ROOMS_TABLE + "("
@@ -56,8 +58,9 @@ public class DBHandler extends SQLiteOpenHelper {
                 + COLUMN_ROOM_NAME + " TEXT,"
                 + COLUMN_CAPACITY + " INTEGER,"
                 + COLUMN_LOCATION + " TEXT,"
-                + COLUMN_IS_AVAILABLE + "BOOLEAN,"
-                + COLUMN_AMENITIES + "TEXT,"
+                + COLUMN_IS_AVAILABLE + "TEXT,"
+                + COLUMN_TIME + "DATETIME,"
+                + COLUMN_AMENITIES + "TEXT"
                 + ")";
 
         String CREATE_RESERVATIONS_TABLE = "CREATE TABLE " + RESERVATIONS_TABLE + "("
