@@ -117,11 +117,12 @@ android:background="@color/ksu_cream"
         android:id="@+id/calendarView"
         android:layout_width="246dp"
         android:layout_height="220dp"
-        android:layout_marginTop="348dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.757"
+        app:layout_constraintHorizontal_bias="0.787"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.675" />
 
     <Button
         android:id="@+id/button"
@@ -152,8 +153,8 @@ android:background="@color/ksu_cream"
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="251dp"
-        android:layout_height="40dp"
+        android:layout_width="253dp"
+        android:layout_height="48dp"
         android:layout_marginTop="12dp"
         android:entries="@array/my_spinner_items"
         app:layout_constraintEnd_toEndOf="parent"
@@ -165,24 +166,36 @@ android:background="@color/ksu_cream"
         android:id="@+id/imageView6"
         android:layout_width="36dp"
         android:layout_height="25dp"
-        app:srcCompat="@drawable/board_performance_profit_svgrepo_com"
-        tools:layout_editor_absoluteX="252dp"
-        tools:layout_editor_absoluteY="320dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.674"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.447"
+        app:srcCompat="@drawable/board_performance_profit_svgrepo_com" />
 
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="27dp"
         android:layout_height="25dp"
-        app:srcCompat="@drawable/projector_material_2_svgrepo_com"
-        tools:layout_editor_absoluteX="300dp"
-        tools:layout_editor_absoluteY="320dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.781"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.447"
+        app:srcCompat="@drawable/projector_material_2_svgrepo_com" />
 
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/wifi"
-        tools:layout_editor_absoluteX="340dp"
-        tools:layout_editor_absoluteY="321dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.878"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.454"
+        app:srcCompat="@drawable/wifi" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

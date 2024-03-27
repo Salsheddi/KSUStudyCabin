@@ -25,7 +25,7 @@ public class UserReservationEditActivity extends AppCompatActivity {
     CalendarView calendarView;
 
     Button confirmbtn;
-    ImageButton back;
+    ImageButton btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,9 +48,10 @@ public class UserReservationEditActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView <?> parent) {
             }
         });
-        back = findViewById(R.id.back);
+        btn = findViewById(R.id.buttongoback);
 
-        back.setOnClickListener(new View.OnClickListener() {
+
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), UserReservationActivity.class);

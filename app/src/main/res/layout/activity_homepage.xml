@@ -11,7 +11,7 @@
         android:id="@+id/searchView"
         android:layout_width="374dp"
         android:layout_height="58dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="28dp"
         android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.567"
@@ -30,16 +30,11 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:orientation="horizontal"
-            android:gravity="center">
-
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
@@ -47,8 +42,113 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:cardCornerRadius="5dp"
-                tools:ignore="DuplicateIds">
+                app:cardCornerRadius="5dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/cream">
+
+                    <ImageView
+                        android:id="@+id/wifi"
+                        android:layout_width="28dp"
+                        android:layout_height="23dp"
+                        android:src="@drawable/wifi"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.498"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.793"
+                        tools:ignore="DuplicateIds" />
+
+                    <ImageView
+                        android:id="@+id/header_image"
+                        android:layout_width="117dp"
+                        android:layout_height="104dp"
+                        android:layout_marginTop="6dp"
+                        android:src="@drawable/study_place"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.054"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="DuplicateIds" />
+
+                    <TextView
+                        android:id="@+id/roomNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Room 6"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.393"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.175"
+                        tools:ignore="DuplicateIds" />
+
+                    <TextView
+                        android:id="@+id/location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Building 6 ,Floor 1 "
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.479"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.505"
+                        tools:ignore="DuplicateIds" />
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="23dp"
+                        android:src="@drawable/user"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.366"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.793" />
+
+                    <TextView
+                        android:id="@+id/capacity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.411"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.802"
+                        tools:ignore="DuplicateIds" />
+
+                    <TextView
+                        android:id="@+id/wifiAvailability"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="wifi"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.56"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.824"
+                        tools:ignore="DuplicateIds" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:cardCornerRadius="5dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -148,7 +248,6 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
@@ -156,8 +255,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:cardCornerRadius="5dp"
-                tools:ignore="DuplicateIds">
+                app:cardCornerRadius="5dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -257,7 +355,6 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
@@ -265,8 +362,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:cardCornerRadius="5dp"
-                tools:ignore="DuplicateIds">
+                app:cardCornerRadius="5dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -296,7 +392,8 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.054"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="DuplicateIds" />
 
                     <TextView
                         android:id="@+id/roomNumber"
@@ -363,534 +460,6 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:cardCornerRadius="5dp"
-                tools:ignore="DuplicateIds">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/cream"
-                    app:cardCornerRadius="50dp">
-
-                    <ImageView
-                        android:id="@+id/wifi"
-                        android:layout_width="28dp"
-                        android:layout_height="23dp"
-                        android:src="@drawable/wifi"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.498"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.793"
-                        tools:ignore="DuplicateIds" />
-
-                    <ImageView
-                        android:id="@+id/header_image"
-                        android:layout_width="117dp"
-                        android:layout_height="104dp"
-                        android:layout_marginTop="6dp"
-                        android:src="@drawable/study_place"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.054"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/roomNumber"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Room 6"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.393"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.175"
-                        tools:ignore="DuplicateIds" />
-
-                    <TextView
-                        android:id="@+id/location"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Building 6 ,Floor 1 "
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.479"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.505"
-                        tools:ignore="DuplicateIds" />
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="23dp"
-                        android:src="@drawable/user"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.366"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.793" />
-
-                    <TextView
-                        android:id="@+id/capacity"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="4"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.411"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.802"
-                        tools:ignore="DuplicateIds" />
-
-                    <TextView
-                        android:id="@+id/wifiAvailability"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="wifi"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.56"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.824"
-                        tools:ignore="DuplicateIds" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:cardCornerRadius="5dp"
-                tools:ignore="DuplicateIds">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/cream"
-                    app:cardCornerRadius="50dp">
-
-                    <ImageView
-                        android:id="@+id/wifi"
-                        android:layout_width="28dp"
-                        android:layout_height="23dp"
-                        android:src="@drawable/wifi"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.498"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.793"
-                        tools:ignore="DuplicateIds" />
-
-                    <ImageView
-                        android:id="@+id/header_image"
-                        android:layout_width="117dp"
-                        android:layout_height="104dp"
-                        android:layout_marginTop="6dp"
-                        android:src="@drawable/study_place"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.054"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/roomNumber"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Room 6"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.393"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.175"
-                        tools:ignore="DuplicateIds" />
-
-                    <TextView
-                        android:id="@+id/location"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Building 6 ,Floor 1 "
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.479"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.505"
-                        tools:ignore="DuplicateIds" />
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="23dp"
-                        android:src="@drawable/user"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.366"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.793" />
-
-                    <TextView
-                        android:id="@+id/capacity"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="4"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.411"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.802"
-                        tools:ignore="DuplicateIds" />
-
-                    <TextView
-                        android:id="@+id/wifiAvailability"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="wifi"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.56"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.824"
-                        tools:ignore="DuplicateIds" />
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/cream"
-                        app:cardCornerRadius="50dp"
-                        tools:layout_editor_absoluteX="2dp"
-                        tools:layout_editor_absoluteY="2dp">
-
-                        <ImageView
-                            android:id="@+id/wifi"
-                            android:layout_width="28dp"
-                            android:layout_height="23dp"
-                            android:src="@drawable/wifi"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.498"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.793"
-                            tools:ignore="DuplicateIds" />
-
-                        <TextView
-                            android:id="@+id/roomNumber"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Room 6"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.393"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.175"
-                            tools:ignore="DuplicateIds" />
-
-                        <TextView
-                            android:id="@+id/location"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Building 6 ,Floor 1 "
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.479"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.505"
-                            tools:ignore="DuplicateIds" />
-
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="23dp"
-                            android:src="@drawable/user"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.366"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.793" />
-
-                        <TextView
-                            android:id="@+id/capacity"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="4"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.411"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.802"
-                            tools:ignore="DuplicateIds" />
-
-                        <TextView
-                            android:id="@+id/wifiAvailability"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="wifi"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.56"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.824"
-                            tools:ignore="DuplicateIds" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:cardCornerRadius="5dp"
-                tools:ignore="DuplicateIds">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/cream"
-                    app:cardCornerRadius="50dp">
-
-                    <ImageView
-                        android:id="@+id/wifi"
-                        android:layout_width="28dp"
-                        android:layout_height="23dp"
-                        android:src="@drawable/wifi"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.498"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.793"
-                        tools:ignore="DuplicateIds" />
-
-                    <ImageView
-                        android:id="@+id/header_image"
-                        android:layout_width="117dp"
-                        android:layout_height="104dp"
-                        android:layout_marginTop="6dp"
-                        android:src="@drawable/study_place"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.054"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/roomNumber"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Room 6"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.393"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.175"
-                        tools:ignore="DuplicateIds" />
-
-                    <TextView
-                        android:id="@+id/location"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Building 6 ,Floor 1 "
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.479"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.505"
-                        tools:ignore="DuplicateIds" />
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="23dp"
-                        android:src="@drawable/user"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.366"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.793" />
-
-                    <TextView
-                        android:id="@+id/capacity"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="4"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.411"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.802"
-                        tools:ignore="DuplicateIds" />
-
-                    <TextView
-                        android:id="@+id/wifiAvailability"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="wifi"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.56"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.824"
-                        tools:ignore="DuplicateIds" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:cardCornerRadius="5dp"
-                tools:ignore="DuplicateIds">
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/cream"
-                        app:cardCornerRadius="50dp"
-                        tools:layout_editor_absoluteX="2dp"
-                        tools:layout_editor_absoluteY="2dp">
-
-                        <ImageView
-                            android:id="@+id/wifi"
-                            android:layout_width="28dp"
-                            android:layout_height="23dp"
-                            android:src="@drawable/wifi"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.498"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.793"
-                            tools:ignore="DuplicateIds" />
-
-                        <ImageView
-                            android:id="@+id/header_image"
-                            android:layout_width="117dp"
-                            android:layout_height="104dp"
-                            android:layout_marginTop="6dp"
-                            android:src="@drawable/study_place"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.054"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            tools:ignore="DuplicateIds" />
-
-                        <TextView
-                            android:id="@+id/roomNumber"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Room 6"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.393"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.175"
-                            tools:ignore="DuplicateIds" />
-
-                        <TextView
-                            android:id="@+id/location"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Building 6 ,Floor 1 "
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.479"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.505"
-                            tools:ignore="DuplicateIds" />
-
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="23dp"
-                            android:src="@drawable/user"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.366"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.793" />
-
-                        <TextView
-                            android:id="@+id/capacity"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="4"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.411"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.802"
-                            tools:ignore="DuplicateIds" />
-
-                        <TextView
-                            android:id="@+id/wifiAvailability"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/wifi"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.56"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.824"
-                            tools:ignore="DuplicateIds" />
-
-
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
-
-            <ImageView
-                android:id="@+id/header_image"
-                android:layout_width="117dp"
-                android:layout_height="104dp"
-                android:layout_marginTop="6dp"
-                android:src="@drawable/study_place"
-                tools:ignore="DuplicateIds" />
 
 
         </LinearLayout>
