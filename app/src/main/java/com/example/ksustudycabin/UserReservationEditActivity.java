@@ -1,5 +1,6 @@
 package com.example.ksustudycabin;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CalendarView;
@@ -7,11 +8,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
 import android.widget.ArrayAdapter;
 import android.widget.AdapterView;
 import android.widget.TextView;
@@ -21,7 +19,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 
-public class UserReservationDetailsActivity extends AppCompatActivity {
+public class UserReservationEditActivity extends AppCompatActivity {
     ImageView room;
     TextView description , location , capacity, date ,duration;
     CalendarView calendarView;
@@ -31,8 +29,7 @@ public class UserReservationDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_user_reservation_edit);
         Spinner spinner = findViewById(R.id.spinner);
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add("Week");
@@ -51,5 +48,15 @@ public class UserReservationDetailsActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView <?> parent) {
             }
         });
+        back = findViewById(R.id.back);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), UserReservationActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }

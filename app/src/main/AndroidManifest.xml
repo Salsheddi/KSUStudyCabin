@@ -13,13 +13,13 @@
         android:theme="@style/Theme.KSUStudyCabin"
         tools:targetApi="31">
         <activity
-            android:name=".UserReservationDetailsActivity"
+            android:name=".UserReservationEditActivity"
             android:exported="false" />
         <activity
             android:name=".UserReservationActivity"
             android:exported="false" />
         <activity
-            android:name=".HomwpageActivity"
+            android:name=".HomepageActivity"
             android:exported="false" />
         <activity
             android:name=".profile"
