@@ -22,44 +22,45 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.158" />
 
+
     <ImageButton
         android:id="@+id/buttongoback"
         android:layout_width="67dp"
         android:layout_height="50dp"
+        android:layout_marginBottom="74dp"
         android:background="@drawable/rounded_button"
-        app:layout_constraintBottom_toTopOf="@+id/textViewwelcomeback"
+        app:layout_constraintBottom_toTopOf="@+id/useremail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.116"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.782"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="?attr/actionModeCloseDrawable" />
-
 
     <EditText
         android:id="@+id/useremail"
         android:layout_width="284dp"
         android:layout_height="58dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="32dp"
         android:ems="10"
         android:hint="university email"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@+id/userpassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.447"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/userpassword"
-        android:layout_width="281dp"
-        android:layout_height="54dp"
-        android:layout_marginBottom="344dp"
+        android:layout_width="294dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="416dp"
         android:ems="10"
         android:hint="password"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button

@@ -28,7 +28,7 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp">
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingLeft="16dp"
@@ -598,18 +598,6 @@
                             app:layout_constraintVertical_bias="0.793"
                             tools:ignore="DuplicateIds" />
 
-                        <ImageView
-                            android:id="@+id/header_image"
-                            android:layout_width="117dp"
-                            android:layout_height="104dp"
-                            android:layout_marginTop="6dp"
-                            android:src="@drawable/study_place"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.054"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            tools:ignore="DuplicateIds" />
-
                         <TextView
                             android:id="@+id/roomNumber"
                             android:layout_width="wrap_content"
@@ -896,21 +884,28 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
+            <ImageView
+                android:id="@+id/header_image"
+                android:layout_width="117dp"
+                android:layout_height="104dp"
+                android:layout_marginTop="6dp"
+                android:src="@drawable/study_place"
+                tools:ignore="DuplicateIds" />
+
 
         </LinearLayout>
     </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
-        android:layout_width="366dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="672dp"
+        android:layout_width="424dp"
+        android:layout_height="59dp"
         android:background="#21658C"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/bottom_navigation_menu"
-        tools:ignore="MissingConstraints" />
+        app:menu="@menu/bottom_navigation_menu" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

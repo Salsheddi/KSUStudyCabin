@@ -17,17 +17,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/rounded_button" />
 
+
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.109"
+        app:layout_constraintVertical_bias="0.152"
         tools:srcCompat="@tools:sample/avatars" />
-
 
     <TextView
         android:id="@+id/profileusername"
@@ -44,6 +45,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.313" />
 
+
     <TextView
         android:id="@+id/profileuseremail"
         android:layout_width="300dp"
@@ -55,31 +57,28 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.765"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.352" />
+        app:layout_constraintVertical_bias="0.358" />
 
     <Button
         android:id="@+id/buttonSignout"
         android:layout_width="177dp"
         android:layout_height="61dp"
-        android:layout_marginBottom="156dp"
+        android:layout_marginBottom="112dp"
         android:background="@drawable/rounded_button"
         android:text="Sign out"
         android:textColor="#FFFFFF"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent" />
-
-
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
-        android:layout_width="366dp"
-        android:layout_height="55dp"
+        android:layout_width="424dp"
+        android:layout_height="59dp"
         android:background="#21658C"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -90,9 +89,13 @@
         android:id="@+id/imageView5"
         android:layout_width="29dp"
         android:layout_height="25dp"
-        app:srcCompat="@drawable/person_team_svgrepo_com"
-        tools:layout_editor_absoluteX="87dp"
-        tools:layout_editor_absoluteY="294dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.262"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.478"
+        app:srcCompat="@drawable/person_team_svgrepo_com" />
 
     <TextView
         android:id="@+id/numbermembers"
