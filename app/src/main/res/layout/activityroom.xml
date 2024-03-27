@@ -19,30 +19,30 @@ android:background="@color/ksu_cream"
     app:layout_constraintTop_toTopOf="parent"
     app:srcCompat="@drawable/studyroom" />
 
-<TextView
-    android:id="@+id/textView2"
-    android:layout_width="453dp"
-    android:layout_height="27dp"
-    android:layout_marginTop="5dp"
-    android:text="Description : Spacious and illuminated with natural light."
-    android:textSize="18sp"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/imageView" />
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="453dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:text="Description : Spacious and illuminated with light."
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-<TextView
-    android:id="@+id/textView3"
-    android:layout_width="291dp"
-    android:layout_height="29dp"
-    android:layout_marginStart="37dp"
-    android:layout_marginEnd="317dp"
-    android:text="Location :  College of Medicine"
-    android:textSize="18sp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.202"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/textView2" />
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="291dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginEnd="317dp"
+        android:text="Location :  College of Medicine"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.158"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-<TextView
+    <TextView
     android:id="@+id/textView4"
     android:layout_width="252dp"
     android:layout_height="24dp"
