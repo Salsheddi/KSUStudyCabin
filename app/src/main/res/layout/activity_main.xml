@@ -35,8 +35,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoImageView"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3" />
 
     <TextView
         android:id="@+id/textViewwelcome"
@@ -53,6 +53,7 @@
         app:layout_constraintTop_toBottomOf="@+id/welcomeTextView"
         app:layout_constraintVertical_bias="0.0" />
 
+
     <Button
         android:id="@+id/buttonGetStarted"
         android:layout_width="315dp"
@@ -65,8 +66,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcomeTextView"
-        app:layout_constraintVertical_bias="0.225" />
-
+        app:layout_constraintVertical_bias="0.167" />
 
     <TextView
         android:id="@+id/textViewSignIn"
@@ -79,7 +79,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.706" />
+        app:layout_constraintVertical_bias="0.669" />
 
     <Button
         android:id="@+id/buttonSignIn"
@@ -93,7 +93,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonGetStarted"
-        app:layout_constraintVertical_bias="0.279" />
+        app:layout_constraintVertical_bias="0.322" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
