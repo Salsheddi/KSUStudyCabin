@@ -32,9 +32,9 @@ public class HomepageActivity extends AppCompatActivity {
         card_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Tarfah Dana should add her java class so this works but i comment it so no error ocurr
-                //inIntenttent = new Intent(getApplicationContext(), room.class);
-                //startActivity(intent);
+
+                Intent intent = new Intent(getApplicationContext(), RoomActivity.class);
+                startActivity(intent);
             }
         });
 
