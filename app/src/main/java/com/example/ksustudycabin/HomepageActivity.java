@@ -33,7 +33,7 @@ public class HomepageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getApplicationContext(), RoomActivity.class);
+                Intent intent = new Intent(HomepageActivity.this, RoomActivity.class);
                 startActivity(intent);
             }
         });
