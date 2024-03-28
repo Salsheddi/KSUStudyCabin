@@ -52,7 +52,7 @@
         android:layout_width="279dp"
         android:layout_height="27dp"
         android:layout_marginTop="4dp"
-        android:text="Location :  College of Medicine"
+        android:text="Location :  Building 6,Floor 1"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
