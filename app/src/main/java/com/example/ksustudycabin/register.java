@@ -52,7 +52,7 @@ public class register extends AppCompatActivity {
                         if (insert) {
                             Toast.makeText(register.this, "Registered successfully", Toast.LENGTH_SHORT).show();
                             // Navigate to the HomepageActivity or any other activity
-                            Intent intent = new Intent(getApplicationContext(), HomepageActivity.class);
+                            Intent intent = new Intent(register.this, HomepageActivity.class);
                             startActivity(intent);
 
                         } else {
