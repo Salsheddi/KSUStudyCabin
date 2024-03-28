@@ -23,8 +23,7 @@ public class UserReservationActivity extends AppCompatActivity {
         delete = findViewById(R.id.deletebtn);
         edit = findViewById(R.id.editbtn);
 
-
-        edit.setOnClickListener(new View.OnClickListener() {
+        edit .setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //change the interface here

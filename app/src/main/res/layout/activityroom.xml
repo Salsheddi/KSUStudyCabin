@@ -52,7 +52,7 @@
         android:layout_width="279dp"
         android:layout_height="27dp"
         android:layout_marginTop="4dp"
-        android:text="Location :  College of Medicine"
+        android:text="Location :  Building 6,Floor 1"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -132,10 +132,12 @@
         android:backgroundTint="@color/ksu_blue"
         android:text="Add Member"
         android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.318"
+        app:layout_constraintHorizontal_bias="0.296"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.931" />
 
     <Button
         android:id="@+id/reservebtn"
