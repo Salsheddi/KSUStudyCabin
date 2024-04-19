@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KSUStudyCabin"
         tools:targetApi="31">
-
+        <activity
+            android:name=".EditProfilePage"
+            android:exported="false" />
         <activity
             android:name=".UserReservationEditActivity"
             android:exported="false" />
