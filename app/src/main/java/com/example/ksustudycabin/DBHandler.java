@@ -123,4 +123,16 @@ public class DBHandler extends SQLiteOpenHelper {
 
         onCreate(db);
     }
+
+    public boolean updatePassword(String email, String newPassword) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_PASSWORD, newPassword);
+
+        int rowsAffected = db.update(STUDENT_TABLE, values, COLUMN_EMAIL + " = ?", new String[]{email});
+        db.close();
+
+        return rowsAffected > 0;
+    }
+
 }

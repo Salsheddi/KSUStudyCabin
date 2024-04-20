@@ -26,6 +26,7 @@ public class UserReservationEditActivity extends AppCompatActivity {
 
     Button confirmbtn;
     ImageButton btn;
+    Button reservebtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +50,7 @@ public class UserReservationEditActivity extends AppCompatActivity {
             }
         });
         btn = findViewById(R.id.buttongoback);
-
+        reservebtn = findViewById(R.id.reservebtn);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +59,15 @@ public class UserReservationEditActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        reservebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), UserReservationActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 }
