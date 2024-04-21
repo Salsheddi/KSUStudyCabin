@@ -46,6 +46,7 @@ public class DBHandler extends SQLiteOpenHelper {
     public DBHandler (@Nullable Context context) {
         super(context, "KSU studyCabin", null, 1);
     }
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_STUDENT_TABLE = "CREATE TABLE " + STUDENT_TABLE + "("
@@ -80,7 +81,33 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_STUDENT_TABLE);
         db.execSQL(CREATE_STUDY_ROOMS_TABLE);
         db.execSQL(CREATE_RESERVATIONS_TABLE);
+
+        // Insert study room data
+        insertStudyRoom(db, "Room 1", 4, "Building A, Floor 1", "true", "08:00", "22:00", "Wi-Fi, Whiteboard", "path/to/photo1");
+        insertStudyRoom(db, "Room 2", 8, "Building B, Floor 2", "true", "09:00", "21:00", "Wi-Fi", "path/to/photo2");
+        insertStudyRoom(db, "Room 3", 6, "Building C, Floor 3", "true", "10:00", "20:00", "Wi-Fi, Projector", "path/to/photo3");
+
     }
+
+    private void insertStudyRoom(SQLiteDatabase db, String roomName, int capacity, String location, String isAvailable, String openTime, String closeTime, String amenities, String photoPath) {
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_ROOM_NAME, roomName);
+        values.put(COLUMN_CAPACITY, capacity);
+        values.put(COLUMN_LOCATION, location);
+        values.put(COLUMN_IS_AVAILABLE, isAvailable);
+        values.put(COLUMN_OPEN_TIME, openTime);
+        values.put(COLUMN_CLOSE_TIME, closeTime);
+        values.put(COLUMN_AMENITIES, amenities);
+        values.put(COLUMN_PHOTO_PATH, photoPath);
+
+        db.insert(STUDY_ROOMS_TABLE, null, values);
+    }
+
+    public Cursor getAllStudyRoomsCursor() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + STUDY_ROOMS_TABLE, null);
+    }
+
 
 //shdan
 
@@ -134,5 +161,21 @@ public class DBHandler extends SQLiteOpenHelper {
 
         return rowsAffected > 0;
     }
+    public boolean addReservation(String studentEmail, int roomId, long startTime, long endTime, String memberEmails) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_STUDENT_EMAIL, studentEmail);
+        values.put(COLUMN_ROOM_ID, roomId);
+        values.put(COLUMN_START_TIME, startTime);
+        values.put(COLUMN_END_TIME, endTime);
+        values.put(COLUMN_MEMBER_EMAILS, memberEmails);
+
+        long result = db.insert(RESERVATIONS_TABLE, null, values);
+        db.close();
+
+        return result != -1; // Return true if insert is successful
+    }
+
+
 
 }
