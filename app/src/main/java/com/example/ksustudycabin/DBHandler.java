@@ -1,5 +1,6 @@
 package com.example.ksustudycabin;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -108,10 +109,11 @@ public class DBHandler extends SQLiteOpenHelper {
     public boolean checkUserCredentials(String email, String password) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + STUDENT_TABLE + " WHERE " + COLUMN_EMAIL + " = ? AND " + COLUMN_PASSWORD + " = ?", new String[]{email, password});
-        boolean exists = cursor.getCount() > 0;
+        int count = cursor.getCount();
         cursor.close();
-        return exists;
+        return count == 1; // Return true if exactly one row is found, indicating valid credentials
     }
+
 
 
     @Override
@@ -133,6 +135,18 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close();
 
         return rowsAffected > 0;
+    }
+
+    @SuppressLint("Range")
+    public String getUserEmail() {
+        String email = null;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT " + COLUMN_EMAIL + " FROM " + STUDENT_TABLE, null);
+        if (cursor != null && cursor.moveToFirst()) {
+            email = cursor.getString(cursor.getColumnIndex(COLUMN_EMAIL));
+            cursor.close();
+        }
+        return email;
     }
 
 }
