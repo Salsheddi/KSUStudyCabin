@@ -44,8 +44,13 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String COLUMN_END_TIME = "end_time";
     private static final String COLUMN_MEMBER_EMAILS = "member_emails";
 
+    private UserSessionManager sessionManager;
+    private Context context;
+
     public DBHandler (@Nullable Context context) {
         super(context, "KSU studyCabin", null, 1);
+        this.context = context;
+        this.sessionManager = UserSessionManager.getInstance(context);
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -111,7 +116,12 @@ public class DBHandler extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("SELECT * FROM " + STUDENT_TABLE + " WHERE " + COLUMN_EMAIL + " = ? AND " + COLUMN_PASSWORD + " = ?", new String[]{email, password});
         int count = cursor.getCount();
         cursor.close();
-        return count == 1; // Return true if exactly one row is found, indicating valid credentials
+        if (count==1){
+            // Set user email when signing in
+            sessionManager.getInstance(context).setUserEmail(email);
+            return true;
+        }
+        return false; // Return true if exactly one row is found, indicating valid credentials
     }
 
 
@@ -139,14 +149,14 @@ public class DBHandler extends SQLiteOpenHelper {
 
     @SuppressLint("Range")
     public String getUserEmail() {
-        String email = null;
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT " + COLUMN_EMAIL + " FROM " + STUDENT_TABLE, null);
-        if (cursor != null && cursor.moveToFirst()) {
-            email = cursor.getString(cursor.getColumnIndex(COLUMN_EMAIL));
-            cursor.close();
-        }
-        return email;
+//        String email = null;
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        Cursor cursor = db.rawQuery("SELECT " + COLUMN_EMAIL + " FROM " + STUDENT_TABLE, null);
+//        if (cursor != null && cursor.moveToFirst()) {
+//            email = cursor.getString(cursor.getColumnIndex(COLUMN_EMAIL));
+//            cursor.close();
+//        }
+        return sessionManager.getInstance(context).getUserEmail();
     }
 
 }

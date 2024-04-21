@@ -55,6 +55,7 @@ public class profile extends AppCompatActivity {
             public void onClick(View view) {
                 //change the interface here
                 Intent intent = new Intent(profile.this, MainActivity.class);
+//                UserSessionManager.getInstance().clearSession();
                 startActivity(intent);
             }
         });
