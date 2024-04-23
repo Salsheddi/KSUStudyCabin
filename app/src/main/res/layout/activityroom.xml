@@ -52,7 +52,7 @@
         android:layout_width="279dp"
         android:layout_height="27dp"
         android:layout_marginTop="4dp"
-        android:text="Location :  Building 6,Floor 1"
+
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,7 +65,7 @@
         android:layout_width="158dp"
         android:layout_height="22dp"
         android:layout_marginTop="8dp"
-        android:text="Capacity : 6 people"
+
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"

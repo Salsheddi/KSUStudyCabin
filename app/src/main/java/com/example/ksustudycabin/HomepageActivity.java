@@ -1,6 +1,10 @@
 package com.example.ksustudycabin;
 
+
+
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -11,9 +15,13 @@ import android.widget.LinearLayout;
 import android.database.Cursor;
 import android.widget.SearchView;
 
+import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import android.widget.TextView;
 
@@ -22,74 +30,48 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomepageActivity extends AppCompatActivity {
 
-    CardView card_view;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_homepage);
 
-// Initialize the DBHandler
-        DBHandler dbHandler = new DBHandler(this);
 
-        LinearLayout cardContainer = findViewById(R.id.cardContainer);
-// Fetch study room data as Cursor
-        Cursor cursor = dbHandler.getAllStudyRoomsCursor();
-        if (cursor != null && cursor.moveToFirst()) {
-            do {
-                // Extract data from the Cursor
-                int roomNumberIndex = cursor.getColumnIndex("COLUMN_ROOM_NAME");
-                int locationIndex = cursor.getColumnIndex("COLUMN_LOCATION");
-                int capacityIndex = cursor.getColumnIndex("COLUMN_CAPACITY");
-                int isAvailableIndex  = cursor.getColumnIndex("COLUMN_IS_AVAILABLE");
-                int amenitiesIndex = cursor.getColumnIndex("COLUMN_AMENITIES");
+        // Define arrays or lists to store the data for each card
+        String[] roomNumbers = {"Room 1", "Room 2", "Room 3", "Room 22", "Room 5"};
+        String[] locations = {"Building A, Floor 1", "Building B, Floor 2", "Building C, Floor 3", "Building 1, Floor 2", "Building 3, Floor 2"};
+        String[] capacities = {"4", "8", "6", "6", "4"};
+        String[] amenitiesList = {"Wi-Fi, Whiteboard", "Wi-Fi", "Wi-Fi, Projector", "Wi-Fi, Whiteboard", "Wi-Fi, Whiteboard, Printer"};
 
-                String roomNumber = cursor.getString(roomNumberIndex);
-                String location = cursor.getString(locationIndex);
-                int capacity = cursor.getInt(capacityIndex);
-                boolean isAvailable = cursor.getInt(isAvailableIndex) == 1;
-                String amenities = cursor.getString(amenitiesIndex);
+        int[] cardViewIds = {R.id.cardView1, R.id.cardView2, R.id.cardView3, R.id.cardView4, R.id.cardView5};
 
-                if (isAvailable) {
-                    // Inflate the card layout
-                    View cardView = getLayoutInflater().inflate(R.layout.activity_homepage, cardContainer, false);
+        for (int i = 0; i < cardViewIds.length; i++) {
+            final int finalI = i;
+            CardView cardView = findViewById(cardViewIds[i]);
+            cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Get the data from the arrays/lists based on the clicked card index
+                    String roomNumber = roomNumbers[finalI];
+                    String location = locations[finalI];
+                    String capacity = capacities[finalI];
+                    String amenities = amenitiesList[finalI];
 
-                    // Find views within the card layout
-                    ImageView wifiImageView = cardView.findViewById(R.id.wifi);
-                    ImageView headerImageView = cardView.findViewById(R.id.header_image);
-                    TextView roomNumberTextView = cardView.findViewById(R.id.roomNumber);
-                    TextView locationTextView = cardView.findViewById(R.id.location);
-                    TextView capacityTextView = cardView.findViewById(R.id.capacity);
-                    TextView wifiAvailabilityTextView = cardView.findViewById(R.id.wifiAvailability);
-
-                    // Set data to views
-                    wifiImageView.setImageResource(R.drawable.wifi);
-                    // Set header image based on roomNumber or use a default image
-                    headerImageView.setImageResource(R.drawable.study_place);
-                    roomNumberTextView.setText(roomNumber);
-                    locationTextView.setText(location);
-                    capacityTextView.setText(String.valueOf(capacity));
-                    wifiAvailabilityTextView.setText(amenities);
-
-                    // Add the card to the container
-                    cardContainer.addView(cardView);
+                    // Pass the data to the RoomActivity
+                    Intent intent = new Intent(HomepageActivity.this, RoomActivity.class);
+                    intent.putExtra("ROOM_NUMBER", roomNumber);
+                    intent.putExtra("LOCATION", location);
+                    intent.putExtra("CAPACITY", capacity);
+                    intent.putExtra("AMENITIES", amenities);
+                    startActivity(intent);
                 }
-            } while (cursor.moveToNext());
+            });
         }
 
-        // Close the cursor after use
-        if (cursor != null) {
-            cursor.close();
-        }
-        CardView card_view = (CardView) findViewById(R.id.cardView);
-        card_view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                Intent intent = new Intent(HomepageActivity.this, RoomActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNav);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

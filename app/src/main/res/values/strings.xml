@@ -2,9 +2,14 @@
     <string name="app_name">KSUStudyCabin</string>
     <string name="wifi">Wifi</string>
     <string-array name="my_spinner_items">
-        <item>week</item>
-        <item>month</item>
-        <item>3 months</item>
+        <item>from 8:00 to 9:00</item>
+        <item>from 9:00 to 10:00</item>
+        <item>from 10:00 to 11:00</item>
+        <item>from 11:00 to 12:00</item>
+        <item>from 12:00 to 13:00</item>
+        <item>from 13:00 to 14:00</item>
+        <item>from 14:00 to 15:00</item>
+
 
     </string-array>
 </resources>
