@@ -5,14 +5,14 @@ public class StudyRoom {
     private String roomName;
     private int capacity;
     private String location;
-    private String isAvailable;
+    private boolean isAvailable;
     private String openTime;
     private String closeTime;
     private String amenities;
     private String photoPath;
 
     // Constructor
-    public StudyRoom(int id, String roomName, int capacity, String location, String isAvailable, String openTime, String closeTime, String amenities, String photoPath) {
+    public StudyRoom(int id, String roomName, int capacity, String location, boolean isAvailable, String openTime, String closeTime, String amenities, String photoPath) {
         this.id = id;
         this.roomName = roomName;
         this.capacity = capacity;
@@ -57,11 +57,11 @@ public class StudyRoom {
         this.location = location;
     }
 
-    public String isAvailable() {
+    public boolean isAvailable() {
         return isAvailable;
     }
 
-    public void setAvailable(String available) {
+    public void setAvailable(boolean available) {
         isAvailable = available;
     }
 

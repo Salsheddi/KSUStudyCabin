@@ -20,15 +20,18 @@ import androidx.cardview.widget.CardView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
+import android.widget.EditText;
+import android.widget.ListView;
 import java.util.List;
-
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.example.ksustudycabin.StudyRoomAdapter;
 public class UserReservationActivity extends AppCompatActivity {
     ImageButton delete , edit;
 
 
+    private EditText editTextSearch; // The search input field
+    private ListView listViewReservations;
+    private DBHandler dbHandler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,9 +40,13 @@ public class UserReservationActivity extends AppCompatActivity {
         Context context = getApplicationContext();
         DBHandler dbHelper = new DBHandler(context);
 
+        dbHandler = new DBHandler(this);
+
+        editTextSearch = findViewById(R.id.editTextSearch); // Replace with your actual EditText ID
+        listViewReservations = findViewById(R.id.listViewReservations);
         delete = findViewById(R.id.deletebtn);
         edit = findViewById(R.id.editbtn);
-
+        loadReservedRooms();
         //generate cardviews for the rooms
 
         // Retrieve the student's email from the session
@@ -114,6 +121,13 @@ public class UserReservationActivity extends AppCompatActivity {
             }
         });
     }
+    private void loadReservedRooms() {
+        List<StudyRoom> rooms =  dbHandler.searchReservedStudyRoomsForUser();
+        StudyRoomAdapter adapter = new StudyRoomAdapter(this, rooms);
+        ListView listView = findViewById(R.id.listViewReservations);
+        listView.setAdapter(adapter);
+    }
+
 
 
         // Method to generate a card dynamically for each reserved study room
