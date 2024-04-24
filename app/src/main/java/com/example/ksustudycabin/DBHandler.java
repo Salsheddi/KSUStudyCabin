@@ -465,6 +465,19 @@ public class DBHandler extends SQLiteOpenHelper {
 
         return rooms;
     }
+
+    public boolean editReservation(int reservationId, String startTime, String endTime) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_START_TIME, startTime);
+        values.put(COLUMN_END_TIME, endTime);
+
+        int rowsAffected = db.update(RESERVATIONS_TABLE, values, COLUMN_RESERVATION_ID + " = ?", new String[]{String.valueOf(reservationId)});
+        db.close();
+
+        return rowsAffected > 0;
+    }
+
 }
 // Method to get room ID from room number
 //        public int getRoomIdFromRoomNumber(String roomNumber) {
