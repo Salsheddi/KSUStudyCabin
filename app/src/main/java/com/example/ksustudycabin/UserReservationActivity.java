@@ -1,3 +1,4 @@
+
 package com.example.ksustudycabin;
 
 import android.annotation.SuppressLint;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -22,18 +24,14 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import android.widget.EditText;
 import android.widget.ListView;
-import java.util.List;
-import android.widget.Button;
-import android.widget.ArrayAdapter;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.example.ksustudycabin.DBHandler;
-import com.example.ksustudycabin.StudyRoom;
-import com.example.ksustudycabin.StudyRoomAdapter;
-import com.example.ksustudycabin.UserSessionManager;
-// ...any other custom classes you use
 
+import java.util.ArrayList;
+import java.util.List;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.example.ksustudycabin.StudyRoomAdapter;
 public class UserReservationActivity extends AppCompatActivity {
     ImageButton delete , edit;
+
 
 
     private EditText editTextSearch; // The search input field
@@ -51,10 +49,8 @@ public class UserReservationActivity extends AppCompatActivity {
 
         dbHandler = new DBHandler(this);
 
-
-
-
         loadReservedRooms();
+
 
         adapter = new StudyRoomAdapter(this, roomList);
         listViewReservations.setAdapter(adapter);
@@ -72,16 +68,9 @@ public class UserReservationActivity extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
             }
         });
-    }
-    private String getUserEmail() {
-        // Assuming UserSessionManager has a method called getUserEmail
-        return UserSessionManager.getInstance(getApplicationContext()).getUserEmail();
-    }
-        //generate cardviews for the rooms
 
-        // Retrieve the student's email from the session
 
-        String studentEmail = UserSessionManager.getInstance(context).getUserEmail();
+
 
 
 
@@ -107,9 +96,13 @@ public class UserReservationActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-    private void loadReservedRooms() {
-        List<StudyRoom> rooms =  dbHandler.searchReservedStudyRoomsForUser();
+    }
+    private String getUserEmail() {
+        // Assuming UserSessionManager has a method called getUserEmail
+        return UserSessionManager.getInstance(getApplicationContext()).getUserEmail();
+    }
+    private void loadReservedRooms( ) {
+        List<StudyRoom> rooms = dbHandler.searchReservedStudyRoomsForUser();
         StudyRoomAdapter adapter = new StudyRoomAdapter(this, rooms);
 
         ListView listView = findViewById(R.id.listViewReservations);
