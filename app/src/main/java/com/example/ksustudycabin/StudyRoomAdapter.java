@@ -1,5 +1,6 @@
 package com.example.ksustudycabin;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.example.ksustudycabin.StudyRoom;
@@ -15,11 +18,14 @@ import java.util.List;
 public class StudyRoomAdapter extends ArrayAdapter<StudyRoom> {
     private Context mContext;
     private List<StudyRoom> studyRoomList;
+    private DBHandler dbHandler;
 
     public StudyRoomAdapter(@NonNull Context context, @NonNull List<StudyRoom> objects) {
         super(context, 0, objects);
         mContext = context;
         studyRoomList = objects;
+        dbHandler = new DBHandler(context);
+        Log.d("StudyRoomAdapter", "studyRoomList size: " + studyRoomList.size());
     }
 
     @NonNull
@@ -56,8 +62,30 @@ public class StudyRoomAdapter extends ArrayAdapter<StudyRoom> {
 
         // Set click listeners for the buttons if needed
         deleteButton.setOnClickListener(v -> {
-            // Handle delete action
+            // Retrieve the corresponding StudyRoom object
+            StudyRoom roomToDelete = studyRoomList.get(position);
+
+            // Perform deletion operation (e.g., delete reservation from database)
+            // Assuming you have a method in your DBHandler to delete a reservation
+
+            boolean isDeleted = dbHandler.deleteReservation(roomToDelete.getId());
+
+            // Check if deletion was successful
+            if (isDeleted) {
+                // Remove the deleted reservation from the studyRoomList
+                studyRoomList.remove(position);
+
+                // Notify the adapter that the dataset has changed
+                notifyDataSetChanged();
+
+                // Optionally, show a toast or perform any other UI update
+                Toast.makeText(mContext, "Reservation deleted", Toast.LENGTH_SHORT).show();
+            } else {
+                // Handle deletion failure
+                Toast.makeText(mContext, "Failed to delete reservation", Toast.LENGTH_SHORT).show();
+            }
         });
+
 
         editButton.setOnClickListener(v -> {
             // Handle edit action

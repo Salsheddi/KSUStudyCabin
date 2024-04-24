@@ -31,12 +31,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class    HomepageActivity extends AppCompatActivity {
 
 
-
+    private DBHandler dbHandler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_homepage);
+        dbHandler = new DBHandler(this);
+        insertStudyRooms();
 
 
         // Define arrays or lists to store the data for each card
@@ -73,6 +75,7 @@ public class    HomepageActivity extends AppCompatActivity {
 
 
 
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNav);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -94,6 +97,18 @@ public class    HomepageActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+    private void insertStudyRooms() {
+        SQLiteDatabase db = dbHandler.getWritableDatabase();
+
+        dbHandler.insertStudyRoom(db, new StudyRoom(1, "Room 1", 4, "Building 6 ,Floor 1", "true", "08:00", "22:00", "wifi,Whiteboard,Projector", "@drawable/study_place"));
+        dbHandler.insertStudyRoom(db, new StudyRoom(2, "Room 6", 3, "Building 5 ,Floor 1", "true", "09:00", "21:00", "wifi,Whiteboard,Projector", "@drawable/study_place"));
+        dbHandler.insertStudyRoom(db, new StudyRoom(3, "Room 3", 4, "Building 6 ,Floor 2", "true", "10:00", "20:00", "wifi,Whiteboard,Projector", "@drawable/study_place"));
+        dbHandler.insertStudyRoom(db, new StudyRoom(4, "Room 22", 6, "Building 1 ,Floor 2", "true", "08:00", "22:00", "wifi,Whiteboard,Projector", "@drawable/study_place"));
+        dbHandler.insertStudyRoom(db, new StudyRoom(5, "Room 5", 4, "Building 3 ,Floor 2", "true", "09:00", "21:00", "wifi,Whiteboard,Projector", "@drawable/study_place"));
+
+        // Close the database connection
+        db.close();
     }
 
 }

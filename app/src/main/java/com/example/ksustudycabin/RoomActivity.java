@@ -150,22 +150,4 @@ public class RoomActivity extends AppCompatActivity {
         });
     }
 
-    // Method to get room ID from room number
-//    private int getRoomIdFromRoomNumber(String roomNumber) {
-//        DBHandler dbHelper = new DBHandler(getApplicationContext());
-//        SQLiteDatabase db = dbHelper.getReadableDatabase();
-//        int roomId = -1; // Default value indicating invalid room number
-//
-//        // Execute the raw query and directly return the result
-//        Cursor cursor = db.rawQuery("SELECT " + DBHandler.getColumnId() + " FROM " + DBHandler.getStudyRoomsTable() + " WHERE " + DBHandler.getColumnRoomName() + "=?", new String[]{roomNumber});
-//
-//        // Check if the cursor has any rows
-//        if (cursor.moveToFirst()) {
-//            roomId = cursor.getInt(0); // Retrieve the value from the first column (index 0)
-//        }
-//
-//        cursor.close();
-//        db.close();
-//        return roomId;
-//    }
 }

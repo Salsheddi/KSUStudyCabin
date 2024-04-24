@@ -46,8 +46,6 @@ public class UserReservationActivity extends AppCompatActivity {
 
 
         loadReservedRooms();
-//        delete = findViewById(R.id.deletebtn);
-//        edit = findViewById(R.id.editbtn);
 
 
 
@@ -86,70 +84,6 @@ public class UserReservationActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
     }
 
-
-//        // Method to generate a card dynamically for each reserved study room
-//        private void generateCard(final StudyRoom studyRoom, final int reservationId) {
-//            // Inflate the card layout
-//            LayoutInflater inflater = LayoutInflater.from(this);
-//            View cardView = inflater.inflate(R.layout.reservation_cards, null);
-//
-//            // Populate the card with study room details
-//            TextView roomNumberTextView = cardView.findViewById(R.id.roomNumber);
-//            roomNumberTextView.setText("Room " + studyRoom.getId());
-//
-//            TextView locationTextView = cardView.findViewById(R.id.location);
-//            locationTextView.setText(studyRoom.getLocation());
-//
-//            TextView capacityTextView = cardView.findViewById(R.id.capacity);
-//            capacityTextView.setText(String.valueOf(studyRoom.getCapacity()));
-//
-//            TextView amenitiesTextView = cardView.findViewById(R.id.amenities);
-//            amenitiesTextView.setText(studyRoom.getAmenities());
-//
-//            // Delete button
-//            ImageButton deleteBtn = cardView.findViewById(R.id.deletebtn);
-//            deleteBtn.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Context context = getApplicationContext();
-//                    DBHandler dbHelper = new DBHandler(context);
-//                    // Delete reservation associated with this card
-//                    dbHelper.deleteReservation(reservationId);
-//
-//                    // Remove the card from the layout
-//                    ((ViewGroup) cardView.getParent()).removeView(cardView);
-//                }
-//            });
-//
-//            // Add the card to the parent layout
-//            LinearLayout parentLayout = findViewById(R.id.parentLayout);
-//            parentLayout.addView(cardView);
-//        }
-
-//        delete .setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                //change the interface here
-//                Intent intent = new Intent(getApplicationContext(), deleteActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-
-//        edit .setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                //change the interface here
-//                Intent intent = new Intent(getApplicationContext(), UserReservationEditActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-
-
-//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-//            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-//            return insets;
-//        });
 
 
 }
