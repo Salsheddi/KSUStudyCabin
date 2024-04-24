@@ -11,12 +11,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -80,7 +82,7 @@ public class RoomActivity extends AppCompatActivity {
 
                 Log.d("RoomActivity", "Reserve button clicked");
 
-                dbHelper.printStudyRooms();
+
 
 
 
@@ -92,6 +94,28 @@ public class RoomActivity extends AppCompatActivity {
                     // Define arrays for start and end times
                     String[] startTimes = {"9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00"};
                     String[] endTimes = {"10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00"};
+
+                    String[] duration = {
+                            "from 8:00 to 9:00",
+                            "from 9:00 to 10:00",
+                            "from 10:00 to 11:00",
+                            "from 11:00 to 12:00",
+                            "from 12:00 to 13:00",
+                            "from 13:00 to 14:00",
+                            "from 14:00 to 15:00"
+                    };
+
+                    CalendarView calendarView = findViewById(R.id.calendarView);
+                    calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+                        @Override
+                        public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                            // Format the selected date as needed
+                            String selectedDate = year + "-" + (month + 1) + "-" + dayOfMonth;
+
+
+                        }
+                    });
+
 
 // Retrieve the selected spinner item
                     Spinner spinner = findViewById(R.id.spinner);
@@ -111,6 +135,9 @@ public class RoomActivity extends AppCompatActivity {
                     if (success) {
 
                         Toast.makeText(getApplicationContext(), "Reservation added successfully", Toast.LENGTH_SHORT).show();
+                        // Navigate to HomepageActivity
+                        Intent intent = new Intent(RoomActivity.this, HomepageActivity.class);
+                        startActivity(intent);
                     } else {
                         // Handle insertion failure
                         Toast.makeText(getApplicationContext(), "Failed to add reservation", Toast.LENGTH_SHORT).show();
