@@ -10,86 +10,86 @@
         android:background="@color/cream">
 
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        >
-
-        <LinearLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/cream">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            >
 
-            <ImageView
-                android:id="@+id/wifi"
-                android:layout_width="28dp"
-                android:layout_height="23dp"
-                android:src="@drawable/wifi"
-                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/cream">
 
-            <ImageView
-                android:id="@+id/header_image"
-                android:layout_width="117dp"
-                android:layout_height="104dp"
-                android:layout_marginTop="6dp"
-                android:src="@drawable/study_place"
-                 />
+                <ImageView
+                    android:id="@+id/wifi"
+                    android:layout_width="28dp"
+                    android:layout_height="23dp"
+                    android:src="@drawable/wifi"
+                    />
 
-            <TextView
-                android:id="@+id/roomNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Room 6"
-                 />
+                <ImageView
+                    android:id="@+id/header_image"
+                    android:layout_width="117dp"
+                    android:layout_height="104dp"
+                    android:layout_marginTop="6dp"
+                    android:src="@drawable/study_place"
+                    />
 
-            <TextView
-                android:id="@+id/location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Building 6 ,Floor 1 "
-                />
+                <TextView
+                    android:id="@+id/roomNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Room 6"
+                    />
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="23dp"
-                android:src="@drawable/user"
-                 />
+                <TextView
+                    android:id="@+id/location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Building 6 ,Floor 1 "
+                    />
 
-            <TextView
-                android:id="@+id/capacity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="4"
-                 />
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="23dp"
+                    android:src="@drawable/user"
+                    />
 
-            <TextView
-                android:id="@+id/amenities"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="wifi"
-                 />
+                <TextView
+                    android:id="@+id/capacity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4"
+                    />
 
-            <ImageButton
-                android:id="@+id/deletebtn"
-                android:layout_width="45dp"
-                android:layout_height="36dp"
-                android:background="@null"
-                android:src="@drawable/delete"
-                android:contentDescription="" />
+                <TextView
+                    android:id="@+id/amenities"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="wifi"
+                    />
 
-            <ImageButton
-                android:id="@+id/editbtn"
-                android:layout_width="44dp"
-                android:layout_height="43dp"
-                android:background="@null"
-                android:src="@android:drawable/ic_menu_edit"
-                 />
+                <ImageButton
+                    android:id="@+id/deletebtn"
+                    android:layout_width="45dp"
+                    android:layout_height="36dp"
+                    android:background="@null"
+                    android:src="@drawable/delete"
+                    android:contentDescription="" />
+
+                <ImageButton
+                    android:id="@+id/editbtn"
+                    android:layout_width="44dp"
+                    android:layout_height="43dp"
+                    android:background="@null"
+                    android:src="@android:drawable/ic_menu_edit"
+                    />
 
 
 
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

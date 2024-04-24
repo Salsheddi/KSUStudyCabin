@@ -27,14 +27,15 @@ import java.util.List;
 
 public class UserReservationActivity extends AppCompatActivity {
     ImageButton delete , edit;
-    Context context = getApplicationContext();
-    DBHandler dbHelper = new DBHandler(context);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_user_reservation);
+        Context context = getApplicationContext();
+        DBHandler dbHelper = new DBHandler(context);
 
         delete = findViewById(R.id.deletebtn);
         edit = findViewById(R.id.editbtn);
@@ -139,6 +140,8 @@ public class UserReservationActivity extends AppCompatActivity {
             deleteBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Context context = getApplicationContext();
+                    DBHandler dbHelper = new DBHandler(context);
                     // Delete reservation associated with this card
                     dbHelper.deleteReservation(reservationId);
 
