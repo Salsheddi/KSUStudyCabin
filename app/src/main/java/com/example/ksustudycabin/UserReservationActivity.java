@@ -1,71 +1,41 @@
 package com.example.ksustudycabin;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
+import android.widget.EditText;
+import android.widget.ListView;
 import java.util.List;
-
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.example.ksustudycabin.StudyRoomAdapter;
 public class UserReservationActivity extends AppCompatActivity {
     ImageButton delete , edit;
-    Context context = getApplicationContext();
-    DBHandler dbHelper = new DBHandler(context);
 
+    private EditText editTextSearch; // The search input field
+    private ListView listViewReservations;
+    private DBHandler dbHandler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_user_reservation);
 
+        dbHandler = new DBHandler(this);
+
+        editTextSearch = findViewById(R.id.editTextSearch); // Replace with your actual EditText ID
+        listViewReservations = findViewById(R.id.listViewReservations);
         delete = findViewById(R.id.deletebtn);
         edit = findViewById(R.id.editbtn);
-
-        //generate cardviews for the rooms
-
-        // Retrieve the student's email from the session
-
-        String studentEmail = UserSessionManager.getInstance(context).getUserEmail();
-        // Query the reservations table to get the list of reserved room IDs for the student
-
-
-
-        List<Integer> roomIds = dbHelper.getReservedRoomIdsForStudent(studentEmail);
-        // Dynamically generate card views for each reserved room
-
-        // Dynamically generate card views for each reserved room
-        for (Integer roomId : roomIds) {
-            // Fetch study room details for each reserved room ID
-            StudyRoom studyRoom = dbHelper.fetchStudyRoom(roomId);
-            int reservationId = dbHelper.getReservationId(studentEmail, roomId);
-
-            // Generate a card dynamically for each reserved study room
-            generateCard(studyRoom, reservationId);
-        }
-
-
-
-
-
-
+        loadReservedRooms();
         delete .setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -112,44 +82,15 @@ public class UserReservationActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+
+
     }
-
-
-        // Method to generate a card dynamically for each reserved study room
-        private void generateCard(final StudyRoom studyRoom, final int reservationId) {
-            // Inflate the card layout
-            LayoutInflater inflater = LayoutInflater.from(this);
-            View cardView = inflater.inflate(R.layout.reservation_cards, null);
-
-            // Populate the card with study room details
-            TextView roomNumberTextView = cardView.findViewById(R.id.roomNumber);
-            roomNumberTextView.setText("Room " + studyRoom.getId());
-
-            TextView locationTextView = cardView.findViewById(R.id.location);
-            locationTextView.setText(studyRoom.getLocation());
-
-            TextView capacityTextView = cardView.findViewById(R.id.capacity);
-            capacityTextView.setText(String.valueOf(studyRoom.getCapacity()));
-
-            TextView amenitiesTextView = cardView.findViewById(R.id.amenities);
-            amenitiesTextView.setText(studyRoom.getAmenities());
-
-            // Delete button
-            ImageButton deleteBtn = cardView.findViewById(R.id.deletebtn);
-            deleteBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // Delete reservation associated with this card
-                    dbHelper.deleteReservation(reservationId);
-
-                    // Remove the card from the layout
-                    ((ViewGroup) cardView.getParent()).removeView(cardView);
-                }
-            });
-
-            // Add the card to the parent layout
-            LinearLayout parentLayout = findViewById(R.id.parentLayout);
-            parentLayout.addView(cardView);
-        }
+    private void loadReservedRooms() {
+        List<StudyRoom> rooms =  dbHandler.searchReservedStudyRoomsForUser();
+        StudyRoomAdapter adapter = new StudyRoomAdapter(this, rooms);
+        ListView listView = findViewById(R.id.listViewReservations);
+        listView.setAdapter(adapter);
+    }
 
 }

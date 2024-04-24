@@ -5,9 +5,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.content.Context;
 import android.database.Cursor;
-import android.util.Log;
-
+import android.database.sqlite.SQLiteAbortException;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
@@ -53,6 +53,49 @@ public class DBHandler extends SQLiteOpenHelper {
     private Context context;
 
 
+    public static String getReservationsTable() {
+        return RESERVATIONS_TABLE;
+    }
+    public static String getStudyRoomsTable() {
+        return STUDY_ROOMS_TABLE;
+    }
+
+    public static String getColumnRoomName() {
+        return COLUMN_ROOM_NAME;
+    }
+    public static String getColumnCapacity() {
+        return COLUMN_CAPACITY;
+    }
+
+    public static String getColumnLocation() {
+        return COLUMN_LOCATION;
+    }
+    public static String getColumnAmenities() {
+        return COLUMN_AMENITIES;
+    }
+
+
+
+    public static String getColumnId() {
+        return COLUMN_ID;
+    }
+
+
+    public static String getColumnRoomId() {
+        return COLUMN_ROOM_ID;
+    }
+
+    public static String getColumnStartTime() {
+        return COLUMN_START_TIME;
+    }
+
+    public static String getColumnEndTime() {
+        return COLUMN_END_TIME;
+    }
+
+    public static String getColumnMemberEmails() {
+        return COLUMN_MEMBER_EMAILS;
+    }
 
 
 
@@ -71,23 +114,23 @@ public class DBHandler extends SQLiteOpenHelper {
                 + ")";
 
         String CREATE_STUDY_ROOMS_TABLE = "CREATE TABLE " + STUDY_ROOMS_TABLE + "("
-                + COLUMN_ID + " INTEGER,"
+                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + COLUMN_ROOM_NAME + " TEXT,"
                 + COLUMN_CAPACITY + " INTEGER,"
                 + COLUMN_LOCATION + " TEXT,"
-                + COLUMN_IS_AVAILABLE + " TEXT,"
-                + COLUMN_OPEN_TIME + " TEXT,"
-                + COLUMN_CLOSE_TIME + " TEXT,"
-                + COLUMN_AMENITIES + " TEXT,"
-                + COLUMN_PHOTO_PATH + " TEXT"
+                + COLUMN_IS_AVAILABLE + "TEXT,"
+                + COLUMN_OPEN_TIME + "DATETIME,"
+                + COLUMN_CLOSE_TIME + "DATETIME,"
+                + COLUMN_AMENITIES + "TEXT,"
+                + COLUMN_PHOTO_PATH + "TEXT"
                 + ")";
 
         String CREATE_RESERVATIONS_TABLE = "CREATE TABLE " + RESERVATIONS_TABLE + "("
                 + COLUMN_RESERVATION_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + COLUMN_STUDENT_EMAIL + " TEXT,"
                 + COLUMN_ROOM_ID + " INTEGER,"
-                + COLUMN_START_TIME + " TEXT,"
-                + COLUMN_END_TIME + " TEXT,"
+                + COLUMN_START_TIME + " DATETIME,"
+                + COLUMN_END_TIME + " DATETIME,"
                 + COLUMN_MEMBER_EMAILS + " TEXT,"
                 + "FOREIGN KEY(" + COLUMN_STUDENT_EMAIL + ") REFERENCES " + STUDENT_TABLE + "(" + COLUMN_EMAIL + "),"
                 + "FOREIGN KEY(" + COLUMN_ROOM_ID + ") REFERENCES " + STUDY_ROOMS_TABLE + "(" + COLUMN_ID + ")"
@@ -97,27 +140,26 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_STUDY_ROOMS_TABLE);
         db.execSQL(CREATE_RESERVATIONS_TABLE);
 
-        insertStudyRoom(db, 1,"Room 1", 4, "Building 6 ,Floor 1", "08:00", "22:00", "wifi,Whiteboard,Projector", "@drawable/study_place");
+        insertStudyRoom(db, "Room 1", 4, "Building 6 ,Floor 1", "true", "08:00", "22:00", "wifi,Whiteboard,Projector", "@drawable/study_place");
 
-        insertStudyRoom(db, 2,"Room 6", 3, "Building 5 ,Floor 1", "09:00", "21:00", "wifi,Whiteboard,Projector", "@drawable/study_place");
+        insertStudyRoom(db, "Room 6", 3, "Building 5 ,Floor 1", "true", "09:00", "21:00", "wifi,Whiteboard,Projector", "@drawable/study_place");
 
-        insertStudyRoom(db, 3,"Room 3", 4, "Building 6 ,Floor 2", "10:00", "20:00", "wifi,Whiteboard,Projector", "@drawable/study_place");
+        insertStudyRoom(db, "Room 3", 4, "Building 6 ,Floor 2", "true", "10:00", "20:00", "wifi,Whiteboard,Projector", "@drawable/study_place");
 
-        insertStudyRoom(db, 4,"Room 22", 6, "Building 1 ,Floor 2", "08:00", "22:00", "wifi,Whiteboard,Projector", "@drawable/study_place");
+        insertStudyRoom(db, "Room 22", 6, "Building 1 ,Floor 2", "true", "08:00", "22:00", "wifi,Whiteboard,Projector", "@drawable/study_place");
 
-        insertStudyRoom(db, 5,"Room 5", 4, "Building 3 ,Floor 2", "09:00", "21:00", "wifi,Whiteboard,Projector", "@drawable/study_place");
+        insertStudyRoom(db, "Room 5", 4, "Building 3 ,Floor 2", "true", "09:00", "21:00", "wifi,Whiteboard,Projector", "@drawable/study_place");
 
     }
 
 
 
-    private void insertStudyRoom(SQLiteDatabase db, int id, String roomName, int capacity, String location, String openTime, String closeTime, String amenities, String photoPath) {
+    private void insertStudyRoom(SQLiteDatabase db, String roomName, int capacity, String location, String isAvailable, String openTime, String closeTime, String amenities, String photoPath) {
         ContentValues values = new ContentValues();
-        values.put(COLUMN_ID, id);
         values.put(COLUMN_ROOM_NAME, roomName);
         values.put(COLUMN_CAPACITY, capacity);
         values.put(COLUMN_LOCATION, location);
-        values.put(COLUMN_IS_AVAILABLE, "true");
+        values.put(COLUMN_IS_AVAILABLE, isAvailable);
         values.put(COLUMN_OPEN_TIME, openTime);
         values.put(COLUMN_CLOSE_TIME, closeTime);
         values.put(COLUMN_AMENITIES, amenities);
@@ -205,44 +247,16 @@ public class DBHandler extends SQLiteOpenHelper {
 
         return result != -1; // Return true if insert is successful
     }
-    // Method to print out the contents of the STUDY_ROOMS_TABLE
-    public void printStudyRooms() {
-        SQLiteDatabase db = this.getReadableDatabase();
+    public boolean updateRoomAvailability(int roomId, boolean isAvailable) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_IS_AVAILABLE, isAvailable ? "true" : "false");
 
-        // Select all columns from the STUDY_ROOMS_TABLE
-        Cursor cursor = db.rawQuery("SELECT * FROM " + STUDY_ROOMS_TABLE, null);
+        int rowsAffected = db.update(STUDY_ROOMS_TABLE, values, COLUMN_ID + " = ?",
+                new String[]{String.valueOf(roomId)});
 
-        // Loop through the cursor to print each row
-        while (cursor.moveToNext()) {
-            @SuppressLint("Range") int id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID));
-            @SuppressLint("Range") String roomName = cursor.getString(cursor.getColumnIndex(COLUMN_ROOM_NAME));
-            @SuppressLint("Range") int capacity = cursor.getInt(cursor.getColumnIndex(COLUMN_CAPACITY));
-            @SuppressLint("Range") String location = cursor.getString(cursor.getColumnIndex(COLUMN_LOCATION));
-            @SuppressLint("Range") String isAvailable = cursor.getString(cursor.getColumnIndex(COLUMN_IS_AVAILABLE));
-            @SuppressLint("Range") String openTime = cursor.getString(cursor.getColumnIndex(COLUMN_OPEN_TIME));
-            @SuppressLint("Range") String closeTime = cursor.getString(cursor.getColumnIndex(COLUMN_CLOSE_TIME));
-            @SuppressLint("Range") String amenities = cursor.getString(cursor.getColumnIndex(COLUMN_AMENITIES));
-            @SuppressLint("Range") String photoPath = cursor.getString(cursor.getColumnIndex(COLUMN_PHOTO_PATH));
-
-            // Log the details of each room
-            Log.d("RoomActivity", "Room ID: " + id + ", Room Name: " + roomName + ", Capacity: " + capacity + ", Location: " + location + ", Available: " + isAvailable + ", Open Time: " + openTime + ", Close Time: " + closeTime + ", Amenities: " + amenities + ", Photo Path: " + photoPath);
-        }
-
-        cursor.close();
+        return rowsAffected > 0;
     }
-
-
-
-//    public boolean updateRoomAvailability(int roomId, String isAvailable) {
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        ContentValues values = new ContentValues();
-//        values.put(COLUMN_IS_AVAILABLE, isAvailable);
-//
-//        int rowsAffected = db.update(STUDY_ROOMS_TABLE, values, COLUMN_ID + " = ?",
-//                new String[]{String.valueOf(roomId)});
-//
-//        return rowsAffected > 0;
-//    }
 
     public List<Integer> getReservedRoomIdsForStudent(String studentEmail) {
         List<Integer> roomIds = new ArrayList<>();
@@ -277,7 +291,12 @@ public class DBHandler extends SQLiteOpenHelper {
         return roomIds;
     }
 
-
+    public Cursor getStudyRoomById(int roomId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(STUDY_ROOMS_TABLE, null, COLUMN_ID + "=?",
+                new String[]{String.valueOf(roomId)}, null, null, null);
+        return cursor;
+    }
 
 
     @SuppressLint("Range")
@@ -296,7 +315,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 @SuppressLint("Range") String roomName = cursor.getString(cursor.getColumnIndex(COLUMN_ROOM_NAME));
                 @SuppressLint("Range") int capacity = cursor.getInt(cursor.getColumnIndex(COLUMN_CAPACITY));
                 @SuppressLint("Range") String location = cursor.getString(cursor.getColumnIndex(COLUMN_LOCATION));
-                @SuppressLint("Range") String isAvailable = cursor.getString(cursor.getColumnIndex(COLUMN_IS_AVAILABLE));
+                @SuppressLint("Range") boolean isAvailable = cursor.getInt(cursor.getColumnIndex(COLUMN_IS_AVAILABLE)) == 1;
                 @SuppressLint("Range") String openTime = cursor.getString(cursor.getColumnIndex(COLUMN_OPEN_TIME));
                 @SuppressLint("Range") String closeTime = cursor.getString(cursor.getColumnIndex(COLUMN_CLOSE_TIME));
                 @SuppressLint("Range") String amenities = cursor.getString(cursor.getColumnIndex(COLUMN_AMENITIES));
@@ -363,35 +382,62 @@ public class DBHandler extends SQLiteOpenHelper {
 //        }
         return sessionManager.getInstance(context).getUserEmail();
     }
+    public List<StudyRoom> searchReservedStudyRoomsForUser() {
+        List<StudyRoom> rooms = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String userEmail = getUserEmail(); // Get the current user's email
 
+        // SQL query to join the rooms and reservations on room ID where the student's email matches
+        String query = "SELECT * FROM " + STUDY_ROOMS_TABLE +
+                " INNER JOIN " + RESERVATIONS_TABLE +
+                " ON " + STUDY_ROOMS_TABLE + "." + COLUMN_ID + " = " + RESERVATIONS_TABLE + "." + COLUMN_ROOM_ID +
+                " WHERE " + RESERVATIONS_TABLE + "." + COLUMN_STUDENT_EMAIL + " = ?";
+
+        Cursor cursor = db.rawQuery(query, new String[]{userEmail});
+
+        // Process the query results
+        if (cursor.moveToFirst()) {
+            int idIndex = cursor.getColumnIndex(COLUMN_ID);
+            int roomNameIndex = cursor.getColumnIndex(COLUMN_ROOM_NAME);
+            int capacityIndex = cursor.getColumnIndex(COLUMN_CAPACITY);
+            int locationIndex = cursor.getColumnIndex(COLUMN_LOCATION);
+            int isAvailableIndex = cursor.getColumnIndex(COLUMN_IS_AVAILABLE);
+            int openTimeIndex = cursor.getColumnIndex(COLUMN_OPEN_TIME);
+            int closeTimeIndex = cursor.getColumnIndex(COLUMN_CLOSE_TIME);
+            int amenitiesIndex = cursor.getColumnIndex(COLUMN_AMENITIES);
+            int photoPathIndex = cursor.getColumnIndex(COLUMN_PHOTO_PATH);
+
+            do {
+                int id = cursor.getInt(idIndex);
+                String roomName = cursor.getString(roomNameIndex);
+                int capacity = cursor.getInt(capacityIndex);
+                String location = cursor.getString(locationIndex);
+                boolean isAvailable = cursor.getInt(isAvailableIndex) != 0;
+                String openTime = cursor.getString(openTimeIndex);
+                String closeTime = cursor.getString(closeTimeIndex);
+                String amenities = cursor.getString(amenitiesIndex);
+                String photoPath = cursor.getString(photoPathIndex);
+
+                StudyRoom room = new StudyRoom(
+                        id,
+                        roomName,
+                        capacity,
+                        location,
+                        isAvailable,
+                        openTime,
+                        closeTime,
+                        amenities,
+                        photoPath
+                );
+                rooms.add(room);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return rooms;
 }
-// Method to get room ID from room number
-//        public int getRoomIdFromRoomNumber(String roomNumber) {
-//            Log.d("DBHandler", "in get room id from room number");
-//            SQLiteDatabase db = this.getReadableDatabase();
-//            Log.d("DBHandler", roomNumber); // Log the room ID
-//            int roomId = -1; // Default value indicating invalid room number
-//            printStudyRooms();
-//
-//            try {
-//                String[] projection = {COLUMN_ID}; // Define the columns you want to retrieve
-//                String selection = COLUMN_ROOM_NAME + "=?";
-//                String[] selectionArgs = {roomNumber};
-//                @SuppressLint("Recycle") Cursor cursor = db.query(STUDY_ROOMS_TABLE, projection, selection, selectionArgs, null, null, null);
-//
-//                // Check if the cursor has any rows
-//                if (cursor.moveToFirst()) {
-//                    Log.d("DBHandler", "if");
-//                    roomId = cursor.getInt(0); // Retrieve the value from the first column (index 0)
-//                    Log.d("DBHandler", "Room ID for " + roomNumber + ": " + roomId); // Log the room ID
-//                } else {
-//                    Log.d("DBHandler", "Cursor is empty"); // Log if the cursor has no rows
-//                }
-//            } catch (Exception e) {
-//                Log.e("DBHandler", "Error getting room ID from room number", e);
-//            } finally {
-//                db.close();
-//            }
-//
-//            return roomId;
-//        }
+}
+
+

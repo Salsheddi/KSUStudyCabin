@@ -77,7 +77,7 @@ public class EditProfilePage extends AppCompatActivity {
                         if (TextUtils.isEmpty(oldPassword) || TextUtils.isEmpty(newPassword)) {
                             Toast.makeText(EditProfilePage.this, "Please enter both old and new passwords", Toast.LENGTH_SHORT).show();
                         } else {
-                            updatePassword(oldPassword, newPassword);
+                            //updatePassword(oldPassword, newPassword);
                         }
                     }
                 })
@@ -87,26 +87,26 @@ public class EditProfilePage extends AppCompatActivity {
         dialog.show();
     }
 
-    void updatePassword(String oldPassword, String newPassword) {
-        pd.show();
-        String email = dbHandler.getUserEmail();
-        Log.d("UserEmail", "Retrieved email: " + email);
-        boolean isValid = dbHandler.checkUserCredentials(email, oldPassword);
-        boolean success;
-        if (isValid) {
-            success = dbHandler.updatePassword(email, newPassword);
-            if (success) {
-                pd.dismiss();
-                Toast.makeText(EditProfilePage.this, "Password updated successfully", Toast.LENGTH_SHORT).show();
-            } else {
-                pd.dismiss();
-                Toast.makeText(EditProfilePage.this, "Error updating password", Toast.LENGTH_SHORT).show();
+   // void updatePassword(String oldPassword, String newPassword) {
+        //pd.show();
+       // String email = dbHandler.getUserEmail();
+       // Log.d("UserEmail", "Retrieved email: " + email);
+       // boolean isValid = dbHandler.checkUserCredentials(email, oldPassword);
+      //  boolean success;
+     //   if (isValid) {
+         //   success = dbHandler.updatePassword(email, newPassword);
+          //  if (success) {
+              //  pd.dismiss();
+               // Toast.makeText(EditProfilePage.this, "Password updated successfully", Toast.LENGTH_SHORT).show();
+           // } else {
+           //     pd.dismiss();
+              //  Toast.makeText(EditProfilePage.this, "Error updating password", Toast.LENGTH_SHORT).show();
             }
-        } else {
-            pd.dismiss();
-            Toast.makeText(EditProfilePage.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
-        }
+       // } else {
+       //     pd.dismiss();
+        //    Toast.makeText(EditProfilePage.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
+     //   }
 
-    }
+    //}
 
-}
+//}
