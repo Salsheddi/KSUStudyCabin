@@ -40,10 +40,10 @@ public class HomepageActivity extends AppCompatActivity {
 
 
         // Define arrays or lists to store the data for each card
-        String[] roomNumbers = {"Room 1", "Room 2", "Room 3", "Room 22", "Room 5"};
-        String[] locations = {"Building A, Floor 1", "Building B, Floor 2", "Building C, Floor 3", "Building 1, Floor 2", "Building 3, Floor 2"};
-        String[] capacities = {"4", "8", "6", "6", "4"};
-        String[] amenitiesList = {"Wi-Fi, Whiteboard", "Wi-Fi", "Wi-Fi, Projector", "Wi-Fi, Whiteboard", "Wi-Fi, Whiteboard, Printer"};
+        int[] roomNumbers = {1,2,3,4,5};
+        String[] locations = {"Building 6, Floor 1", "Building 5, Floor 2", "Building 6, Floor 3", "Building 1, Floor 2", "Building 3, Floor 2"};
+        String[] capacities = {"4", "3", "4", "6", "4"};
+        //String[] amenitiesList = {"Wi-Fi, Whiteboard, Projector", "Wi-Fi, Whiteboard, Projector", "Wi-Fi, Whiteboard, Projector", "Wi-Fi, Whiteboard, Projector", "Wi-Fi, Whiteboard, Projector"};
 
         int[] cardViewIds = {R.id.cardView1, R.id.cardView2, R.id.cardView3, R.id.cardView4, R.id.cardView5};
 
@@ -54,17 +54,17 @@ public class HomepageActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     // Get the data from the arrays/lists based on the clicked card index
-                    String roomNumber = roomNumbers[finalI];
+                    int roomNumber = roomNumbers[finalI];
                     String location = locations[finalI];
                     String capacity = capacities[finalI];
-                    String amenities = amenitiesList[finalI];
+                   // String amenities = amenitiesList[finalI];
 
                     // Pass the data to the RoomActivity
                     Intent intent = new Intent(HomepageActivity.this, RoomActivity.class);
                     intent.putExtra("ROOM_NUMBER", roomNumber);
                     intent.putExtra("LOCATION", location);
                     intent.putExtra("CAPACITY", capacity);
-                    intent.putExtra("AMENITIES", amenities);
+                    //intent.putExtra("AMENITIES", amenities);
                     startActivity(intent);
                 }
             });

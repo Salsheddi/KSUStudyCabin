@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -29,6 +30,7 @@ public class RoomActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("RoomActivity", "onCreate called");
         EdgeToEdge.enable(this);
         setContentView(R.layout.activityroom);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -46,12 +48,20 @@ public class RoomActivity extends AppCompatActivity {
                 finish();
             }
         });
+        // Create instances of StudyRoom to represent the study rooms
 
         // Retrieve the data from the Intent extras
         Intent intent = getIntent();
 
+        int roomId = intent.getIntExtra("ROOM_NUMBER", -1);
+        Log.d("RoomActivity", "Received room number: " + roomId); // Log the room number
+
         String location = intent.getStringExtra("LOCATION");
         String capacity = intent.getStringExtra("CAPACITY");
+
+        Log.d("RoomActivity", "Received room id: " + roomId);
+        Log.d("RoomActivity", "Received location: " + location);
+        Log.d("RoomActivity", "Received capacity: " + capacity);
 
         // Find the TextViews in the layout
         TextView locationTextView = findViewById(R.id.textView3);
@@ -61,20 +71,18 @@ public class RoomActivity extends AppCompatActivity {
         locationTextView.setText("Location: " + location);
         capacityTextView.setText("Capacity: " + capacity + " people");
 
+
         Button reserveButton = findViewById(R.id.reservebtn);
+        DBHandler dbHelper = new DBHandler(getApplicationContext());
         reserveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Retrieve the data from the Intent extras
-                Intent intent = getIntent();
-                String roomNumber = intent.getStringExtra("ROOM_NUMBER");
-                DBHandler dbHelper = new DBHandler(getApplicationContext());
+
+                Log.d("RoomActivity", "Reserve button clicked");
+
+                dbHelper.printStudyRooms();
 
 
-                // Assuming you have obtained other necessary information like start time, end time, student email, and member emails
-
-                // Retrieve the room ID from the STUDY_ROOMS_TABLE using the room number
-                int roomId = getRoomIdFromRoomNumber(roomNumber);
 
                 // Check if the room ID is valid
                 if (roomId != -1) {
@@ -101,8 +109,7 @@ public class RoomActivity extends AppCompatActivity {
 
 
                     if (success) {
-                        // Handle successful insertion
-                        boolean updateSuccess = dbHelper.updateRoomAvailability(roomId, false);
+
                         Toast.makeText(getApplicationContext(), "Reservation added successfully", Toast.LENGTH_SHORT).show();
                     } else {
                         // Handle insertion failure
@@ -117,21 +124,21 @@ public class RoomActivity extends AppCompatActivity {
     }
 
     // Method to get room ID from room number
-    private int getRoomIdFromRoomNumber(String roomNumber) {
-        DBHandler dbHelper = new DBHandler(getApplicationContext());
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        int roomId = -1; // Default value indicating invalid room number
-
-        // Execute the raw query and directly return the result
-        Cursor cursor = db.rawQuery("SELECT " + DBHandler.getColumnId() + " FROM " + DBHandler.getStudyRoomsTable() + " WHERE " + DBHandler.getColumnRoomName() + "=?", new String[]{roomNumber});
-
-        // Check if the cursor has any rows
-        if (cursor.moveToFirst()) {
-            roomId = cursor.getInt(0); // Retrieve the value from the first column (index 0)
-        }
-
-        cursor.close();
-        db.close();
-        return roomId;
-    }
+//    private int getRoomIdFromRoomNumber(String roomNumber) {
+//        DBHandler dbHelper = new DBHandler(getApplicationContext());
+//        SQLiteDatabase db = dbHelper.getReadableDatabase();
+//        int roomId = -1; // Default value indicating invalid room number
+//
+//        // Execute the raw query and directly return the result
+//        Cursor cursor = db.rawQuery("SELECT " + DBHandler.getColumnId() + " FROM " + DBHandler.getStudyRoomsTable() + " WHERE " + DBHandler.getColumnRoomName() + "=?", new String[]{roomNumber});
+//
+//        // Check if the cursor has any rows
+//        if (cursor.moveToFirst()) {
+//            roomId = cursor.getInt(0); // Retrieve the value from the first column (index 0)
+//        }
+//
+//        cursor.close();
+//        db.close();
+//        return roomId;
+//    }
 }
